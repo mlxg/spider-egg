@@ -6,8 +6,8 @@ const urlMd = require('url');
 const request = require('request-promise')
 
 
-const jsdom = require('jsdom');
-const {JSDOM} = jsdom;
+const {JSDOM} = require('jsdom');
+
 const fs = require('fs');
 
 class reptilesController extends Controller {
@@ -37,7 +37,7 @@ class reptilesController extends Controller {
 
   async parseHTML(html) {
     const dom = new JSDOM(html);
-    let aList = dom.window.document.querySelectorAll('div.site-piclist_pic > a');
+      let aList = dom.window.document.querySelectorAll('.title-wrap a.link-txt');
     aList = Array.from(aList);
     return aList.map((a) => {
       return {
